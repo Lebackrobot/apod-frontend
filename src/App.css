@@ -1,0 +1,16 @@
+* {
+    overflow: hidden;
+}
+
+.wallpaper-col {
+    background-image: url('./images/background.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-size: 70%;
+    background-color:#000;
+    height: 100vh;
+    width: 100vw;
+    padding: 0px;
+    margin: 0px;
+}
