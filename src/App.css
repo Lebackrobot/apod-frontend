@@ -37,3 +37,12 @@
     padding-left: 5vw !important;
     padding-right: 5vw !important;
 }
+
+.btn-linkedin {
+    background-color: #027cba !important;
+    
+}
+
+.btn-linkedin:hover {
+    background-color: #076493 !important;
+}
