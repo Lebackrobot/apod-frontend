@@ -1,4 +1,4 @@
-import './App.css';
+import styles from './App.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import nasaUrl from './images/nasa-logo.png'
@@ -12,11 +12,9 @@ import MailContact from './components/MailContact/MailContact';
 
 const App = () => {
   return (
-    <div>
       <Row>
-        <Col md={6} className='d-flex align-items-center justify-content-center p-custom'>
+        <Col md={6} className={`d-flex align-items-center justify-content-center ${styles.pCustom}`}>
           <Container>
-
             <MailerHeader className='mb-5 pb-2' subtitle={"Receive daily in your email photos provided by NASA's API, APOD."} imageUrl={nasaUrl}>
               Astronomy Picture of The Day
             </MailerHeader>
@@ -35,10 +33,8 @@ const App = () => {
           </Container>
         </Col>
 
-        <Col className="wallpaper-col  d-none d-md-block" md={6}></Col>
+        <Col className={`${styles.wallpaperCol}  d-none d-md-block`} md={6}></Col>
       </Row>
-
-    </div>
   )
 }
 
