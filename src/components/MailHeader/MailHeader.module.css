@@ -3,12 +3,12 @@
     font-weight: 300;
 }
 
-.imageLg {
+.imageMd {
     width: 350px;
 }
 
-@media (max-width: 992px) {
-    .imageLg {
+@media (max-width: 768px) {
+    .imageMd {
         width: 250px;
     }
 }

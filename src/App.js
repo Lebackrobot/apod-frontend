@@ -14,7 +14,7 @@ const App = () => {
   return (
     <div>
       <Row>
-        <Col lg={4} className='d-flex align-items-center justify-content-center p-custom'>
+        <Col md={6} className='d-flex align-items-center justify-content-center p-custom'>
           <Container>
 
             <MailerHeader className='mb-5 pb-2' subtitle={"Receive daily in your email photos provided by NASA's API, APOD."} imageUrl={nasaUrl}>
@@ -35,7 +35,7 @@ const App = () => {
           </Container>
         </Col>
 
-        <Col className="wallpaper-col  d-none d-lg-block" lg={8}></Col>
+        <Col className="wallpaper-col  d-none d-md-block" md={6}></Col>
       </Row>
 
     </div>
