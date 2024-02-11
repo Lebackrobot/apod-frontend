@@ -12,8 +12,8 @@ import MailContact from './components/MailContact/MailContact';
 
 const App = () => {
   return (
-      <Row>
-        <Col md={6} className={`d-flex align-items-center justify-content-center ${styles.pCustom}`}>
+    <Row style={{ minHeight: '50vh' }}>
+        <Col md={6} className={`d-flex  justify-content-center ${styles.pCustom}`}>
           <Container>
             <MailerHeader className='mb-5 pb-2' subtitle={"Receive daily in your email photos provided by NASA's API, APOD."} imageUrl={nasaUrl}>
               Astronomy Picture of The Day
@@ -22,9 +22,8 @@ const App = () => {
             <MailerForm></MailerForm>
 
             <Col>
+              <MailContact></MailContact>
               <Row className='d-flex align-items-center justify-content-center'>
-                <MailContact></MailContact>
-                
                 <MailSocialMedia socialMedia='linkedin'> Linkedin </MailSocialMedia>
                 <MailSocialMedia socialMedia='gmail'> Gmail </MailSocialMedia>
                 <MailSocialMedia socialMedia='github'> GitHub </MailSocialMedia>

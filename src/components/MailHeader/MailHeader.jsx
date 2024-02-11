@@ -5,7 +5,7 @@ import styles from './MailHeader.module.css'
 
 const MailerHeader = ({ children, subtitle, imageUrl }) => {
     return (
-        <Row className='justify-content-center mb-5 pb-2'>
+        <Row className='justify-content-center mb-4'>
             <Col className='text-center'>
                 <img src={imageUrl} className={styles.imageMd} alt='Nasa icon'/>
                 <h4>{ children }</h4>
