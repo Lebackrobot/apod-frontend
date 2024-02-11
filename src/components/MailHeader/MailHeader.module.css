@@ -1,0 +1,14 @@
+.subtitle {
+    color: #656464;
+    font-weight: 300;
+}
+
+.imageLg {
+    width: 350px;
+}
+
+@media (max-width: 992px) {
+    .imageLg {
+        width: 250px;
+    }
+}
