@@ -4,11 +4,5 @@
 }
 
 .imageMd {
-    width: 280px;
-}
-
-@media (max-width: 768px) {
-    .imageMd {
-        width: 250px;
-    }
+    width: 29vh;
 }
