@@ -7,3 +7,13 @@
     background-color: #2775cf !important;
     border-color: #2775cf !important;
 }
+
+.toast {
+    position: fixed;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: rgba(8, 8, 8, 0.927);
+    color: white;
+}
