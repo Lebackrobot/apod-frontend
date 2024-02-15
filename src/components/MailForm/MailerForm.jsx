@@ -32,10 +32,9 @@ const MailerForm = () => {
             
             if (error && error.response && error.response.status === 409) {
                 setShowConfictToast(true)
+                return
             }
 
-            console.log(error.response.status) 
-            console.error('Erro ao enviar o formulário:', error);
             setShowErrorToast(true);
         }
     };
@@ -53,7 +52,7 @@ const MailerForm = () => {
             <Form onSubmit={handleSubmit}>
                 <Form.Control style={{ backgroundColor: '#f9f9f9' }} className='mb-3' placeholder="Name" value={username} onChange={handleNameChange} required />
                 <Form.Control style={{ backgroundColor: '#f9f9f9' }} className='mb-3' type="email" placeholder="Email" value={email} onChange={handleEmailChange} required />
-                <Button className={`w-100 button-primary ${styles.buttonPrimary}`} type="submit">Subscribe <strong>(⚠️ Beta Tester)</strong></Button>
+                <Button className={`w-100 button-primary ${styles.buttonPrimary}`} type="submit">Subscribe <strong style={{ fontSize: '14px' }}>(🌿 Beta Tester)</strong></Button>
             </Form>
 
             <Toast show={showSuccessToast} onClose={() => setShowSuccessToast(false)} delay={2000} autohide className={styles.toast}>
