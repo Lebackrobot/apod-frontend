@@ -22,16 +22,19 @@ const MailerForm = () => {
 
         try {
             const response = await axios.post('https://apod-backend.onrender.com/noauth/subscriptions', { username, email });
-            if (response.status === 200) {
+            if (response.status === 201) {
                 setShowSuccessToast(true);
             }
 
-            else if (response.status === 409) {
-                setShowConfictToast(true)
-            }
         } 
         
         catch (error) {
+            
+            if (error && error.response && error.response.status === 409) {
+                setShowConfictToast(true)
+            }
+
+            console.log(error.response.status) 
             console.error('Erro ao enviar o formulário:', error);
             setShowErrorToast(true);
         }
@@ -50,7 +53,7 @@ const MailerForm = () => {
             <Form onSubmit={handleSubmit}>
                 <Form.Control style={{ backgroundColor: '#f9f9f9' }} className='mb-3' placeholder="Name" value={username} onChange={handleNameChange} required />
                 <Form.Control style={{ backgroundColor: '#f9f9f9' }} className='mb-3' type="email" placeholder="Email" value={email} onChange={handleEmailChange} required />
-                <Button className={`w-100 button-primary ${styles.buttonPrimary}`} type="submit">Subscribe (🚀 next feature)</Button>
+                <Button className={`w-100 button-primary ${styles.buttonPrimary}`} type="submit">Subscribe <strong>(⚠️ Beta Tester)</strong></Button>
             </Form>
 
             <Toast show={showSuccessToast} onClose={() => setShowSuccessToast(false)} delay={2000} autohide className={styles.toast}>
