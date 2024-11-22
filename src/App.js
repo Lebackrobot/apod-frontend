@@ -15,8 +15,8 @@ const App = () => {
     <Row>
         <Col md={6} className={`d-flex  justify-content-center ${styles.pCustom}`}>
           <Container>
-            <MailerHeader className='mb-5 pb-2' subtitle={"Receive daily in your email photos provided by NASA's API, APOD."} imageUrl={nasaUrl}>
-              Astronomy Picture of The Day
+            <MailerHeader className='mb-5 pb-2' imageUrl={nasaUrl}>
+              Mensagem Astrônomica do Dia
             </MailerHeader>
 
             <MailerForm></MailerForm>

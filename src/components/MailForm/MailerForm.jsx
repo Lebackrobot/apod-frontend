@@ -50,9 +50,9 @@ const MailerForm = () => {
     return (
         <>
             <Form onSubmit={handleSubmit}>
-                <Form.Control style={{ backgroundColor: '#f9f9f9' }} className='mb-3' placeholder="Name" value={username} onChange={handleNameChange} required />
+                <Form.Control style={{ backgroundColor: '#f9f9f9' }} className='mb-3' placeholder="Nome" value={username} onChange={handleNameChange} required />
                 <Form.Control style={{ backgroundColor: '#f9f9f9' }} className='mb-3' type="email" placeholder="Email" value={email} onChange={handleEmailChange} required />
-                <Button className={`w-100 button-primary ${styles.buttonPrimary}`} type="submit">Subscribe <strong style={{ fontSize: '14px' }}>(🌿 Beta Tester)</strong></Button>
+                <Button className={`w-100 button-primary ${styles.buttonPrimary}`} type="submit">Inscrever <strong style={{ fontSize: '14px' }}></strong></Button>
             </Form>
 
             <Toast show={showSuccessToast} onClose={() => setShowSuccessToast(false)} delay={2000} autohide className={styles.toast}>
