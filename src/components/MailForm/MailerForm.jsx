@@ -26,7 +26,7 @@ const MailerForm = () => {
                 setShowSuccessToast(true);
             }
 
-        } 
+        }
         
         catch (error) {
             
@@ -60,15 +60,15 @@ const MailerForm = () => {
             </Toast>
 
             <Toast show={showErrorToast} onClose={() => setShowErrorToast(false)} delay={2000} autohide className={styles.toast}>
-                <Toast.Body><strong>⚠️ Error occurred while subscribing!</strong></Toast.Body>
+                <Toast.Body><strong>⚠️ Ocorreu um erro na usa assinatura!</strong></Toast.Body>
             </Toast>
 
             <Toast show={showConfictToast} onClose={() => setShowConfictToast(false)} delay={2000} autohide className={styles.toast}>
-                <Toast.Body><strong>⚠️ Already have a subscription!</strong></Toast.Body>
+                <Toast.Body><strong>⚠️ Esse email já tem uma assinatura!</strong></Toast.Body>
             </Toast>
 
             <Toast show={showInvalidEmailToast} onClose={() => setShowInvalidEmailToast(false)} delay={2000} autohide className={styles.toast}>
-                <Toast.Body><strong>⚠️ Email is invalid!</strong></Toast.Body>
+                <Toast.Body><strong>⚠️ Email inválido!</strong></Toast.Body>
             </Toast>
         </>
     );
