@@ -3,6 +3,7 @@ import { Form, Button, Toast } from 'react-bootstrap';
 import axios from 'axios';
 import styles from './MailerForm.module.css';
 import emailValidator from 'email-validator';
+import { ValidationModal, setShowValidationModal } from '../Modals/ValidationModal';
 
 const MailerForm = () => {
     const [username, setName] = useState('');
@@ -15,12 +16,14 @@ const MailerForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
+        setShowValidationModal(true)
+
         if (!emailValidator.validate(email)) {
             setShowInvalidEmailToast(true)
             return
         }
 
-        try {
+        /* try {
             const response = await axios.post('https://apod-backend.onrender.com/noauth/subscriptions', { username, email });
             if (response.status === 201) {
                 setShowSuccessToast(true);
@@ -36,7 +39,7 @@ const MailerForm = () => {
             }
 
             setShowErrorToast(true);
-        }
+        } */
     };
 
     const handleNameChange = (event) => {
@@ -49,9 +52,13 @@ const MailerForm = () => {
 
     return (
         <>
+            <ValidationModal></ValidationModal>
+
             <Form onSubmit={handleSubmit}>
                 <Form.Control style={{ backgroundColor: '#f9f9f9' }} className='mb-3' placeholder="Nome" value={username} onChange={handleNameChange} required />
                 <Form.Control style={{ backgroundColor: '#f9f9f9' }} className='mb-3' type="email" placeholder="Email" value={email} onChange={handleEmailChange} required />
+
+
                 <Button className={`w-100 button-primary ${styles.buttonPrimary}`} type="submit">Inscrever <strong style={{ fontSize: '14px' }}></strong></Button>
             </Form>
 
