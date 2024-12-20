@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Form, Button, Toast } from 'react-bootstrap';
-import axios from 'axios';
 import styles from './MailerForm.module.css';
 import emailValidator from 'email-validator';
 import { ValidationModal, setShowValidationModal } from '../Modals/ValidationModal';
+import subscriptionController from '../../controllers/subscriptionController';
 
 const MailerForm = () => {
     const [username, setName] = useState('');
@@ -16,31 +16,33 @@ const MailerForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        setShowValidationModal(true)
-
+        
         if (!emailValidator.validate(email)) {
             setShowInvalidEmailToast(true)
             return
         }
-
-        /* try {
-            const response = await axios.post('https://apod-backend.onrender.com/noauth/subscriptions', { username, email });
-            if (response.status === 201) {
-                setShowSuccessToast(true);
+        
+        
+        try {
+            const response = await subscriptionController.create({ name: username, email })
+            if (response.status === 202) {
+                setShowValidationModal(true)
+                return
             }
 
         }
         
         catch (error) {
-            
-            if (error && error.response && error.response.status === 409) {
+            console.error(error)
+
+            if (error.response.status === 401) {
                 setShowConfictToast(true)
                 return
             }
 
-            setShowErrorToast(true);
-        } */
-    };
+            setShowErrorToast(true)
+        }
+    }
 
     const handleNameChange = (event) => {
         setName(event.target.value);
@@ -63,15 +65,11 @@ const MailerForm = () => {
             </Form>
 
             <Toast show={showSuccessToast} onClose={() => setShowSuccessToast(false)} delay={2000} autohide className={styles.toast}>
-                <Toast.Body><strong>🎉 Your subscription is active!</strong></Toast.Body>
+                <Toast.Body><strong>🎉 Sua assinatura está ativa!</strong></Toast.Body>
             </Toast>
 
             <Toast show={showErrorToast} onClose={() => setShowErrorToast(false)} delay={2000} autohide className={styles.toast}>
                 <Toast.Body><strong>⚠️ Ocorreu um erro na usa assinatura!</strong></Toast.Body>
-            </Toast>
-
-            <Toast show={showConfictToast} onClose={() => setShowConfictToast(false)} delay={2000} autohide className={styles.toast}>
-                <Toast.Body><strong>⚠️ Esse email já tem uma assinatura!</strong></Toast.Body>
             </Toast>
 
             <Toast show={showInvalidEmailToast} onClose={() => setShowInvalidEmailToast(false)} delay={2000} autohide className={styles.toast}>
