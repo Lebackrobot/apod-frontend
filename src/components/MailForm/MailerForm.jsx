@@ -12,8 +12,14 @@ const MailerForm = () => {
     const [showErrorToast, setShowErrorToast] = useState(false);
     const [showConfictToast, setShowConfictToast] = useState(false);
     const [showInvalidEmailToast, setShowInvalidEmailToast] = useState(false);
+    const [disableButton, setDisableButton] = useState(false)
 
     const handleSubmit = async (event) => {
+        setDisableButton(true)
+        setTimeout(() => {
+            setDisableButton(false)
+        }, 3000)
+
         event.preventDefault();
 
         
@@ -61,7 +67,7 @@ const MailerForm = () => {
                 <Form.Control style={{ backgroundColor: '#f9f9f9' }} className='mb-3' type="email" placeholder="Email" value={email} onChange={handleEmailChange} required />
 
 
-                <Button className={`w-100 button-primary ${styles.buttonPrimary}`} type="submit">Inscrever <strong style={{ fontSize: '14px' }}></strong></Button>
+                <Button className={`w-100 button-primary ${styles.buttonPrimary}`} disabled={disableButton} type="submit">Inscrever <strong style={{ fontSize: '14px' }}></strong></Button>
             </Form>
 
             <Toast show={showSuccessToast} onClose={() => setShowSuccessToast(false)} delay={2000} autohide className={styles.toast}>
@@ -69,7 +75,7 @@ const MailerForm = () => {
             </Toast>
 
             <Toast show={showErrorToast} onClose={() => setShowErrorToast(false)} delay={2000} autohide className={styles.toast}>
-                <Toast.Body><strong>⚠️ Ocorreu um erro na usa assinatura!</strong></Toast.Body>
+                <Toast.Body><strong>⚠️ Sua assinatura já está ativa!</strong></Toast.Body>
             </Toast>
 
             <Toast show={showInvalidEmailToast} onClose={() => setShowInvalidEmailToast(false)} delay={2000} autohide className={styles.toast}>

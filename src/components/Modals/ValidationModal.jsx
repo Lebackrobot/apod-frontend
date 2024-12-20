@@ -12,6 +12,7 @@ const ValidationModal = () => {
     const [show, setShow] = useState(false)
     const [seconds, setSeconds] = useState(60)
     const form = useForm()
+    const [disableButton, setDisableButton] = useState(false)
 
     const [showSuccessToast, setShowSuccessToast] = useState(false);
     const [showErrorToast, setShowErrorToast] = useState(false);
@@ -48,6 +49,12 @@ const ValidationModal = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
+
+        setDisableButton(true)
+        setTimeout(() => {
+            setDisableButton(false)
+        }, 4000)
+
         try {
             const response = await subscriptionConfirmationController.confirm({ token: form.getValues('tokenValue') })
 
@@ -106,7 +113,7 @@ const ValidationModal = () => {
                     <Button variant="secondary" onClick={handleClose}>
                         Fechar
                     </Button>
-                    <Button variant="primary" onClick={handleSubmit}>
+                    <Button variant="primary" onClick={handleSubmit} disabled={disableButton}>
                         Confirmar
                     </Button>
                 </Modal.Footer>
